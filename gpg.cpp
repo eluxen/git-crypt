@@ -147,10 +147,11 @@ std::vector<std::string> gpg_list_secret_keys ()
 
 void gpg_encrypt_to_file (const std::string& filename, const std::string& recipient_fingerprint, const char* p, size_t len)
 {
-	// gpg --batch -o FILENAME -r RECIPIENT -e
+	// gpg --batch --always-trust -o FILENAME -r RECIPIENT -e
 	std::vector<std::string>	command;
 	command.push_back("gpg");
 	command.push_back("--batch");
+	command.push_back("--always-trust");
 	command.push_back("-o");
 	command.push_back(filename);
 	command.push_back("-r");
